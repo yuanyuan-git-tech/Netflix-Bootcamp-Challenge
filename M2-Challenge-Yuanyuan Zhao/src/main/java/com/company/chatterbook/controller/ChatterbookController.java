@@ -55,20 +55,6 @@ public class ChatterbookController {
             }
         }
         throw new RuntimeException("User is not found!");
-//        List<User> returnList = new ArrayList<>();
-//        if (name == null) {
-//            return userList;
-//        } else {
-//            for (User user : userList) {
-//                if (name.equals(user.getName())) {
-//                    returnList.add(user);
-//                }
-//            }
-//            if (returnList == null) {
-//                throw new RuntimeException("User is not found!");
-//            }
-//        }
-//        return returnList;
     }
     @RequestMapping(value = "/users/chatterposts", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)

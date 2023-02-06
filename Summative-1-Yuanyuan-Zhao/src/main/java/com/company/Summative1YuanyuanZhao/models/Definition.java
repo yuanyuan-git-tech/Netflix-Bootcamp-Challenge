@@ -1,14 +1,14 @@
 package com.company.Summative1YuanyuanZhao.models;
 
-public class Word {
+public class Definition {
     int id;
     String word;
     String definition;
 
-    public Word() {
+    public Definition() {
     }
 
-    public Word(String word, String definition, int id) {
+    public Definition(String word, String definition, int id) {
         this.word = word;
         this.definition = definition;
         this.id = id;

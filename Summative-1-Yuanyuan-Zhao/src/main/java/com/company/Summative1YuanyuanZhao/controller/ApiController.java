@@ -2,7 +2,7 @@ package com.company.Summative1YuanyuanZhao.controller;
 
 
 import com.company.Summative1YuanyuanZhao.models.Answer;
-import com.company.Summative1YuanyuanZhao.models.Word;
+import com.company.Summative1YuanyuanZhao.models.Definition;
 import com.company.Summative1YuanyuanZhao.models.Quote;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +11,7 @@ import java.util.*;
 
 @RestController
 public class ApiController {
-    private List<Word> wordList = new ArrayList<>();
+    private List<Definition> wordList = new ArrayList<>();
     private List<Quote> quoteList = new ArrayList<>();
     private List<Answer> answerList = new ArrayList<>();
     private static int idCounterOfQuote = 1;
@@ -19,16 +19,16 @@ public class ApiController {
     private static int idCounterOfAnswer = 1;
 
     public ApiController() {
-        wordList.add(new Word("Homework","schoolwork that a student is required to do at home.", idCounterOfWord++));
-        wordList.add(new Word("Student","a person who is studying at a school or college.", idCounterOfWord++));
-        wordList.add(new Word("Musician","a person who plays a musical instrument, especially as a profession, or is musically talented.", idCounterOfWord++));
-        wordList.add(new Word("Running","the action or movement of a runner.", idCounterOfWord++));
-        wordList.add(new Word("Boy","a male child or adolescent.", idCounterOfWord++));
-        wordList.add(new Word("Table","a piece of furniture with a flat top and one or more legs, providing a level surface on which objects may be placed, and that can be used for such purposes as eating, writing, working, or playing games.", idCounterOfWord++));
-        wordList.add(new Word("Girl","a female child or adolescent.", idCounterOfWord++));
-        wordList.add(new Word("Book","a written or printed work consisting of pages glued or sewn together along one side and bound in covers.", idCounterOfWord++));
-        wordList.add(new Word("Chair","a separate seat for one person, typically with a back and four legs.", idCounterOfWord++));
-        wordList.add(new Word("Biology","the study of living organisms, divided into many specialized fields that cover their morphology, physiology, anatomy, behavior, origin, and distribution.", idCounterOfWord++));
+        wordList.add(new Definition("Homework","schoolwork that a student is required to do at home.", idCounterOfWord++));
+        wordList.add(new Definition("Student","a person who is studying at a school or college.", idCounterOfWord++));
+        wordList.add(new Definition("Musician","a person who plays a musical instrument, especially as a profession, or is musically talented.", idCounterOfWord++));
+        wordList.add(new Definition("Running","the action or movement of a runner.", idCounterOfWord++));
+        wordList.add(new Definition("Boy","a male child or adolescent.", idCounterOfWord++));
+        wordList.add(new Definition("Table","a piece of furniture with a flat top and one or more legs, providing a level surface on which objects may be placed, and that can be used for such purposes as eating, writing, working, or playing games.", idCounterOfWord++));
+        wordList.add(new Definition("Girl","a female child or adolescent.", idCounterOfWord++));
+        wordList.add(new Definition("Book","a written or printed work consisting of pages glued or sewn together along one side and bound in covers.", idCounterOfWord++));
+        wordList.add(new Definition("Chair","a separate seat for one person, typically with a back and four legs.", idCounterOfWord++));
+        wordList.add(new Definition("Biology","the study of living organisms, divided into many specialized fields that cover their morphology, physiology, anatomy, behavior, origin, and distribution.", idCounterOfWord++));
 
 
         quoteList.add(new Quote("Nelson Mandela", "The greatest glory in living lies not in never falling, but in rising every time we fall.", idCounterOfQuote++));
@@ -67,7 +67,7 @@ public class ApiController {
 
     @RequestMapping(value = "/word", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Word getWord() {
+    public Definition getWord() {
         return wordList.get(new Random().nextInt(wordList.size()));
     }
 

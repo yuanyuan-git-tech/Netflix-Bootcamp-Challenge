@@ -38,7 +38,7 @@ public class ApiControllerTest {
     }
     @Test
     public void getWord() throws Exception {
-        mockMvc.perform(get("/quote")).andExpect(status().isOk());
+        mockMvc.perform(get("/word")).andExpect(status().isOk());
     }
     @Test
     public void postAnswer() throws Exception {

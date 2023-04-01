@@ -2,6 +2,7 @@ package com.company.recordstoreapi.controller;
 
 import com.company.recordstoreapi.models.Record;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,12 +27,15 @@ public class RecordStoreController {
         recordList.add(new Record("Kanye West", "My Beautiful Dark Twisted Fantasy", "2008", idCounter++));
         recordList.add(new Record("Sturgill Simpson", "Metamodern Sounds in Country Music", "2010", idCounter++));
     }
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(Principal principal) {
-        return "Hello " + principal.getName() + "!!!";
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String loggedIn(Principal principal) {
+        return "Looks like you're logged in!";
     }
 
+
     @RequestMapping(value = "/records", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseStatus(value = HttpStatus.CREATED)
     public Record createRecord(@RequestBody @Valid Record record) {
 
@@ -42,6 +46,7 @@ public class RecordStoreController {
     }
 
     @RequestMapping(value = "/records", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseStatus(value = HttpStatus.OK)
     public List<Record> getAllRecords() {
 
@@ -51,6 +56,7 @@ public class RecordStoreController {
 
 
     @RequestMapping(value = "/records/{id}", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseStatus(value = HttpStatus.OK)
     public Record getRecordById(@PathVariable int id) {
         Record foundRecord = null;
@@ -66,6 +72,7 @@ public class RecordStoreController {
     }
 
     @RequestMapping(value = "/records/{id}", method = RequestMethod.PUT)
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateRecordById(@PathVariable int id, @RequestBody Record record) {
         int index = -1;
